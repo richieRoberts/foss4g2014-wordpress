@@ -31,3 +31,26 @@ Prototype Android du projet « Salle virtuelle – Traditions de l’arme des Tr
 - Contenu hors ligne
 
 > Les comptes de cette version sont stockés localement. Une version institutionnelle devra utiliser une authentification sécurisée et validée.
+
+
+## Modifier facilement les textes
+Ouvrir le fichier :
+
+`app/src/main/assets/content.js`
+
+Ce fichier regroupe les principaux textes affichés dans l'application :
+- page d'accueil ;
+- chronologie historique ;
+- patrimoine ;
+- visite virtuelle ;
+- titres du profil ;
+- mots du menu inférieur.
+
+Modifiez uniquement le texte placé entre guillemets, puis enregistrez et relancez l'application.
+
+## Menu inférieur
+Le menu fixe a été agrandi pour améliorer la lisibilité sur smartphone :
+- texte plus grand ;
+- icônes plus grandes ;
+- contraste renforcé ;
+- zone tactile légèrement plus haute.
