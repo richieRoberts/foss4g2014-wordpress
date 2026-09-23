@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.webkit.CookieManager;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
@@ -14,6 +15,7 @@ import android.webkit.WebViewClient;
 
 public class MainActivity extends Activity {
     private WebView webView;
+    private static final String HOME = "file:///android_asset/index.html";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +33,26 @@ public class MainActivity extends Activity {
         WebSettings s = webView.getSettings();
         s.setJavaScriptEnabled(true);
         s.setDomStorageEnabled(true);
+        s.setDatabaseEnabled(true);
         s.setAllowFileAccess(true);
         s.setDefaultTextEncodingName("utf-8");
         s.setBuiltInZoomControls(false);
         s.setDisplayZoomControls(false);
+        s.setSupportZoom(true);
         s.setLoadWithOverviewMode(true);
         s.setUseWideViewPort(true);
+
+        CookieManager cm = CookieManager.getInstance();
+        cm.setAcceptCookie(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            cm.setAcceptThirdPartyCookies(webView, true);
+        }
 
         webView.setWebChromeClient(new WebChromeClient());
         webView.setWebViewClient(new WebViewClient() {
             private boolean isInternalWeb(Uri uri) {
-                String host = uri != null ? uri.getHost() : null;
+                if (uri == null) return false;
+                String host = uri.getHost();
                 if (host == null) return false;
                 host = host.toLowerCase();
 
@@ -54,9 +65,21 @@ public class MainActivity extends Activity {
                 return defense || mapsShort || googleMaps;
             }
 
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-                Uri uri = request.getUrl();
+            private boolean handleUrl(WebView view, String url) {
+                if (url == null) return false;
+
+                if (url.startsWith("intent://")) {
+                    try {
+                        Intent intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
+                        String fallback = intent.getStringExtra("browser_fallback_url");
+                        if (fallback != null && (fallback.startsWith("https://") || fallback.startsWith("http://"))) {
+                            view.loadUrl(fallback);
+                        }
+                    } catch (Exception ignored) {}
+                    return true;
+                }
+
+                Uri uri = Uri.parse(url);
                 String scheme = uri.getScheme();
 
                 if ("http".equalsIgnoreCase(scheme) || "https".equalsIgnoreCase(scheme)) {
@@ -64,24 +87,27 @@ public class MainActivity extends Activity {
                     startActivity(new Intent(Intent.ACTION_VIEW, uri));
                     return true;
                 }
+
+                if ("geo".equalsIgnoreCase(scheme) || "market".equalsIgnoreCase(scheme)) {
+                    return true;
+                }
+
                 return false;
             }
 
             @Override
+            public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
+                return handleUrl(view, request.getUrl().toString());
+            }
+
+            @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                if (url != null && (url.startsWith("http://") || url.startsWith("https://"))) {
-                    Uri uri = Uri.parse(url);
-                    if (isInternalWeb(uri)) return false;
-                    startActivity(new Intent(Intent.ACTION_VIEW, uri));
-                    return true;
-                }
-                return false;
+                return handleUrl(view, url);
             }
 
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-
                 if (url == null) return;
 
                 if (url.contains("defense.gouv.fr")) {
@@ -103,7 +129,7 @@ public class MainActivity extends Activity {
                     String js = "(function(){"+
                         "if(!document.getElementById('svtMapBack')){"+
                         "var b=document.createElement('button');b.id='svtMapBack';"+
-                        "b.setAttribute('style','position:fixed;top:56px;left:12px;z-index:2147483647;min-width:128px;height:46px;border:1px solid #d7ad59;background:#061827;color:white;border-radius:14px;padding:0 14px;font:800 15px Arial,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.35)');"+
+                        "b.setAttribute('style','position:fixed;top:56px;left:12px;z-index:2147483647;min-width:136px;height:48px;border:1px solid #d7ad59;background:#061827;color:white;border-radius:14px;padding:0 14px;font:800 15px Arial,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.35)');"+
                         "b.textContent='← Salle Virtuelle';"+
                         "b.onclick=function(){history.back();};document.body.appendChild(b);"+
                         "}"+
@@ -113,13 +139,16 @@ public class MainActivity extends Activity {
             }
         });
 
-        webView.loadUrl("file:///android_asset/index.html");
+        webView.loadUrl(HOME);
     }
 
     @Override
     @SuppressWarnings("deprecation")
     public void onBackPressed() {
-        if (webView != null && webView.canGoBack()) webView.goBack();
-        else super.onBackPressed();
+        if (webView != null && webView.canGoBack()) {
+            webView.goBack();
+        } else {
+            super.onBackPressed();
+        }
     }
 }
