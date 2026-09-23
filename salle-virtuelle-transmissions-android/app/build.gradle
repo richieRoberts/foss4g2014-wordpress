@@ -4,10 +4,10 @@ android {
     namespace 'com.etnc.sallevirtuelle'
     compileSdk 36
     defaultConfig {
-        applicationId 'com.sallevirtuelle.transmissions.v06'
+        applicationId 'com.sallevirtuelle.transmissions.v06r2'
         minSdk 23
         targetSdk 36
-        versionCode 6
-        versionName '0.6'
+        versionCode 8
+        versionName '0.6.2'
     }
 }
