@@ -1,0 +1,75 @@
+name: Build Salle Virtuelle v0.7 Release Unsigned
+
+on:
+  push:
+    branches: [salle-virtuelle-apk-build]
+  workflow_dispatch:
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Android SDK setup
+        run: |
+          SDKMANAGER=/usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager
+          yes | "$SDKMANAGER" --licenses >/dev/null || true
+          "$SDKMANAGER" "platform-tools" "platforms;android-36" "build-tools;36.0.0"
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.13'
+
+      - name: Generate Gradle Wrapper
+        working-directory: salle-virtuelle-transmissions-android
+        run: gradle wrapper --gradle-version 8.13
+
+      - name: Build unsigned release APK
+        working-directory: salle-virtuelle-transmissions-android
+        run: ./gradlew assembleRelease --stacktrace
+
+      - name: Collect unsigned APK
+        run: |
+          APK=$(find salle-virtuelle-transmissions-android/app/build/outputs/apk/release -name "*.apk" | head -1)
+          test -n "$APK"
+          cp "$APK" Salle-Virtuelle-Transmissions-v0.7-UNSIGNED.apk
+
+      - name: Package Android Studio project
+        run: |
+          rm -rf SalleVirtuelleTransmissions
+          cp -R salle-virtuelle-transmissions-android SalleVirtuelleTransmissions
+          rm -rf SalleVirtuelleTransmissions/.gradle SalleVirtuelleTransmissions/app/build SalleVirtuelleTransmissions/build
+          zip -r SalleVirtuelleTransmissions-AndroidStudio-v0.7.zip SalleVirtuelleTransmissions
+
+      - name: Package Android signing tools
+        run: |
+          mkdir -p android-signing-tools/lib
+          cp /usr/local/lib/android/sdk/build-tools/36.0.0/apksigner android-signing-tools/
+          cp /usr/local/lib/android/sdk/build-tools/36.0.0/zipalign android-signing-tools/
+          cp /usr/local/lib/android/sdk/build-tools/36.0.0/lib/apksigner.jar android-signing-tools/lib/
+          chmod +x android-signing-tools/apksigner android-signing-tools/zipalign
+          zip -r Android-Signing-Tools-36.zip android-signing-tools
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Salle-Virtuelle-Transmissions-v0.7-UNSIGNED
+          path: Salle-Virtuelle-Transmissions-v0.7-UNSIGNED.apk
+          if-no-files-found: error
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SalleVirtuelleTransmissions-AndroidStudio-v0.7
+          path: SalleVirtuelleTransmissions-AndroidStudio-v0.7.zip
+          if-no-files-found: error
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Android-Signing-Tools-36
+          path: Android-Signing-Tools-36.zip
+          if-no-files-found: error
