@@ -1,1 +1,142 @@
-The requested file reference is not currently visible. Use files.search or files.list to rediscover the file, then retry with a returned ref_id or file_id.
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Salle virtuelle Transmissions</title>
+<style>
+:root{--navy:#061827;--navy2:#0a2943;--navy3:#123957;--gold:#d7ad59;--gold2:#f0d79a;--white:#f7f9fb;--muted:#a8b7c5;--cream:#f2eadc;--ink:#14212a;--line:rgba(255,255,255,.10);--shadow:0 18px 42px rgba(0,0,0,.28)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#071c30,#04121f);color:var(--white)}body{padding-bottom:calc(78px + env(safe-area-inset-bottom));overflow-x:hidden}button,input{font:inherit}.hidden{display:none!important}.shell{max-width:760px;margin:0 auto}.safe{height:max(8px,env(safe-area-inset-top))}
+.top{position:sticky;top:0;z-index:45;background:rgba(4,18,31,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.toprow{display:grid;grid-template-columns:52px 1fr 52px;align-items:center;padding:8px 12px;gap:6px}.menuBtn,.avatarBtn{width:42px;height:42px;border:0;border-radius:13px;background:rgba(255,255,255,.04);color:#fff;display:grid;place-items:center}.menuLines{width:21px}.menuLines span{display:block;height:2px;background:#fff;margin:5px 0;border-radius:9px}.headTitle{text-align:center;font-weight:850;font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.avatarBtn{border:1px solid rgba(215,173,89,.35);color:var(--gold2);font-weight:900;background:#102e49}
+.page{display:none;padding:14px 14px 26px}.page.active{display:block}.hero{min-height:170px;border-radius:23px;padding:18px;position:relative;overflow:hidden;background:radial-gradient(circle at 80% 10%,#1b4f74 0,#0b2a45 34%,#061827 70%);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.05)}.hero:after{content:"";position:absolute;right:-30px;bottom:-45px;width:170px;height:170px;border:1px solid rgba(215,173,89,.22);border-radius:50%}.heroLabel{color:var(--gold2);font-size:12px;text-transform:uppercase;letter-spacing:.16em;font-weight:900}.hero h1{font-size:31px;line-height:1.04;margin:9px 0 7px;max-width:75%}.hero p{margin:0;color:#ced9e2;line-height:1.5;max-width:80%}.sectionTitle{font-size:24px;font-weight:900;margin:22px 2px 12px}.list{display:grid;gap:10px}.card{border:1px solid rgba(255,255,255,.07);background:linear-gradient(180deg,#113755,#08253f);border-radius:18px;padding:13px;display:flex;align-items:center;gap:12px;box-shadow:0 10px 24px rgba(0,0,0,.18)}button.card{width:100%;color:inherit;text-align:left}.iconBox{width:50px;height:50px;flex:none;border-radius:14px;background:rgba(255,255,255,.07);display:grid;place-items:center;color:var(--gold2);font-size:20px}.cardBody{min-width:0;flex:1}.cardTitle{font-size:16px;font-weight:850}.cardSub{font-size:13px;color:#b7c7d4;margin-top:3px}.chev{font-size:25px;color:#b8c4ce}
+.detail{background:linear-gradient(180deg,var(--cream),#e9dfcd);color:var(--ink);border-radius:22px;padding:18px;box-shadow:var(--shadow)}.detail h2{font-size:28px;margin:2px 0 10px}.detail h3{font-size:18px;margin:20px 0 6px}.detail p{line-height:1.58;margin:9px 0}.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}.chip{padding:7px 10px;border-radius:999px;background:rgba(6,24,39,.08);font-size:12px;font-weight:750}.quote{margin-top:15px;padding:12px 14px;border-radius:14px;background:#e4d9c6;color:#6d5224;font-style:italic;font-weight:750}.source{margin-top:16px;font-size:11px;color:#6e7b86;border-top:1px solid rgba(0,0,0,.12);padding-top:10px}
+.bottom{position:fixed;left:0;right:0;bottom:0;z-index:50;padding-bottom:env(safe-area-inset-bottom);background:rgba(3,15,26,.98);border-top:1px solid var(--line)}.bottomIn{max-width:760px;margin:auto;display:grid;grid-template-columns:repeat(3,1fr)}.navBtn{min-height:72px;border:0;background:transparent;color:#99aab9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font-size:12px;font-weight:800}.navBtn strong{font-size:21px;line-height:1}.navBtn.active{color:var(--gold2)}
+.drawerShade{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.52);opacity:0;pointer-events:none;transition:.22s}.drawerShade.open{opacity:1;pointer-events:auto}.drawer{position:fixed;top:0;left:0;bottom:0;z-index:90;width:min(86vw,360px);background:linear-gradient(180deg,#071e32,#041522);transform:translateX(-103%);transition:.25s ease;box-shadow:18px 0 45px rgba(0,0,0,.4);overflow:auto;padding-bottom:30px}.drawer.open{transform:translateX(0)}.drawerHead{padding:calc(18px + env(safe-area-inset-top)) 16px 15px;border-bottom:1px solid var(--line)}.drawerProfile{display:flex;align-items:center;gap:12px}.profileCircle{width:60px;height:60px;border-radius:50%;border:2px solid var(--gold);display:grid;place-items:center;background:#0b2b46;color:var(--gold2);font-weight:900;font-size:20px}.drawerName{font-size:18px;font-weight:900}.drawerStatus{font-size:12px;color:#a9bac8;margin-top:3px}.connectBtn{margin-top:12px;width:100%;height:42px;border:0;border-radius:13px;background:linear-gradient(180deg,#e2bc69,#c7973d);font-weight:900;color:#17140d}.drawerSection{padding:12px 10px}.drawerItem{width:100%;border:0;background:transparent;color:#eef4f8;display:flex;align-items:center;gap:11px;padding:12px;border-radius:13px;text-align:left;font-weight:780}.drawerItem:hover,.drawerItem.active{background:rgba(255,255,255,.06)}.drawerIcon{width:28px;text-align:center;color:var(--gold2)}.drawerItem .grow{flex:1}.submenu{display:none;padding-left:18px}.submenu.open{display:block}.submenu .drawerItem{font-size:14px;color:#c9d5df;padding:9px 11px}.drawerSocial{margin:18px 12px 0;border-top:1px solid var(--line);padding-top:14px}.instagram{background:linear-gradient(135deg,#5b51d8,#c13584,#f77737)!important}
+.modalShade{position:fixed;inset:0;z-index:110;background:rgba(0,0,0,.7);display:grid;place-items:center;padding:18px}.modal{width:min(430px,100%);background:linear-gradient(180deg,#0b2944,#061927);border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:20px;box-shadow:var(--shadow)}.modalTop{display:flex;justify-content:space-between;align-items:center}.modal h2{margin:0}.closeBtn{border:0;background:transparent;color:#fff;font-size:25px}.field{margin-top:12px}.field label{font-size:12px;color:#b8c6d2;display:block;margin-bottom:5px}.field input{width:100%;height:45px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#fff;padding:0 12px;outline:none}.submit{margin-top:16px;width:100%;height:46px;border:0;border-radius:13px;background:linear-gradient(180deg,#e0b65f,#c89637);font-weight:900}.switchMode{width:100%;border:0;background:transparent;color:#8fc4ff;margin-top:12px}.msg{min-height:18px;color:#ffd0d0;font-size:12px;text-align:center;margin-top:8px}
+.techTimeline{display:grid;gap:10px}.tech{padding:14px;border-left:3px solid var(--gold);background:rgba(255,255,255,.05);border-radius:0 15px 15px 0}.techDate{font-size:11px;color:var(--gold2);font-weight:900;letter-spacing:.12em}.tech h3{margin:4px 0 4px;font-size:17px}.tech p{margin:0;color:#c6d3dd;line-height:1.48}.traditions{margin-top:16px;display:grid;gap:8px}.tradition{padding:12px;border-radius:13px;background:#f1e7d6;color:#202b33;font-weight:750}.gameBox{min-height:300px;display:grid;place-items:center;text-align:center}.gameIcon{font-size:56px}.gameBox p{color:#b8c7d4;max-width:340px}.miniTag{display:inline-block;margin-top:8px;padding:5px 8px;border-radius:999px;background:rgba(215,173,89,.12);color:var(--gold2);font-size:11px;font-weight:800}.search{margin:12px 0;height:44px;border-radius:13px;background:#eef2f5;color:#172631;display:flex;align-items:center;padding:0 12px}.search input{width:100%;border:0;background:transparent;outline:none;color:#15222d}.regimentHeader{text-align:center}.regimentBadge{width:92px;height:112px;margin:0 auto 12px;border-radius:20px;background:linear-gradient(180deg,#143d69,#0a2648);border:2px solid var(--gold);display:grid;place-items:center;color:var(--gold2);font-size:24px;font-weight:950}.metaGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.meta{padding:10px;border-radius:12px;background:rgba(6,24,39,.07)}.meta small{display:block;color:#60727e}.meta strong{display:block;margin-top:2px}.detailSection{padding-top:8px;border-top:1px solid rgba(0,0,0,.1);margin-top:12px}
+@media(min-width:620px){.page{padding:18px}.hero{min-height:200px}.hero h1{font-size:38px}}
+</style>
+</head>
+<body>
+<div id="shade" class="drawerShade"></div>
+<aside id="drawer" class="drawer">
+  <div class="drawerHead">
+    <div class="drawerProfile">
+      <div id="drawerAvatar" class="profileCircle">?</div>
+      <div><div id="drawerName" class="drawerName">Profil</div><div id="drawerStatus" class="drawerStatus">Connexion facultative</div></div>
+    </div>
+    <button id="connectBtn" class="connectBtn" type="button">Se connecter</button>
+  </div>
+  <div class="drawerSection">
+    <button class="drawerItem" data-toggle="regimentsSub"><span class="drawerIcon">◆</span><span class="grow">Régiments</span><span>⌄</span></button>
+    <div id="regimentsSub" class="submenu"></div>
+    <button class="drawerItem" data-toggle="cctSub"><span class="drawerIcon">⌁</span><span class="grow">CCT / CCTFS</span><span>⌄</span></button>
+    <div id="cctSub" class="submenu"></div>
+    <button id="techMenu" class="drawerItem"><span class="drawerIcon">⚡</span><span class="grow">Technologie & traditions</span></button>
+    <button id="gameMenu" class="drawerItem"><span class="drawerIcon">◈</span><span class="grow">Jouer</span><span class="miniTag">Bientôt</span></button>
+  </div>
+  <div class="drawerSocial">
+    <button id="instagramBtn" class="drawerItem instagram"><span class="drawerIcon">◎</span><span class="grow">Instagram DA</span></button>
+  </div>
+</aside>
+
+<div class="top">
+  <div class="safe"></div>
+  <div class="shell toprow">
+    <button id="menuBtn" class="menuBtn" type="button"><div class="menuLines"><span></span><span></span><span></span></div></button>
+    <div id="headerTitle" class="headTitle">Histoire</div>
+    <button id="topAvatar" class="avatarBtn hidden" type="button">U</button>
+  </div>
+</div>
+
+<main class="shell">
+  <section id="page-history" class="page active">
+    <div class="hero"><div class="heroLabel">Transmission & mémoire</div><h1>L’histoire des Transmissions</h1><p>Des premiers signaux au numérique, découvre les grandes étapes qui ont façonné l’arme.</p></div>
+    <div class="sectionTitle">Chronologie</div><div id="historyList" class="list"></div>
+  </section>
+  <section id="page-history-detail" class="page"><div id="historyDetail" class="detail"></div></section>
+
+  <section id="page-heritage" class="page">
+    <div class="hero"><div class="heroLabel">Patrimoine</div><h1>Un héritage à préserver</h1><p>Matériels, symboles, uniformes, lieux et grandes figures.</p></div>
+    <div class="sectionTitle">Collections</div><div id="heritageList" class="list"></div>
+  </section>
+  <section id="page-heritage-detail" class="page"><div id="heritageDetail" class="detail"></div></section>
+
+  <section id="page-visit" class="page">
+    <div class="hero"><div class="heroLabel">Immersion</div><h1>Visite virtuelle</h1><p>Préparer les futures expériences 360°, 3D et VR de la salle des traditions.</p></div>
+    <div class="sectionTitle">Parcours</div><div id="visitList" class="list"></div>
+  </section>
+  <section id="page-visit-detail" class="page"><div id="visitDetail" class="detail"></div></section>
+
+  <section id="page-regiments" class="page">
+    <div class="hero"><div class="heroLabel">Unités</div><h1>Régiments des Transmissions</h1><p>Fiches développées à partir des informations publiques officielles.</p></div>
+    <label class="search">⌕&nbsp;<input id="regSearch" placeholder="Rechercher un régiment"></label>
+    <div id="regimentsList" class="list"></div>
+  </section>
+  <section id="page-regiment-detail" class="page"><div id="regimentDetail" class="detail"></div></section>
+
+  <section id="page-cct" class="page">
+    <div class="hero"><div class="heroLabel">Appui au commandement</div><h1>CCT & CCTFS</h1><p>Compagnies de commandement et de transmissions associées aux grandes unités.</p></div>
+    <div id="cctList" class="list" style="margin-top:14px"></div>
+  </section>
+  <section id="page-cct-detail" class="page"><div id="cctDetail" class="detail"></div></section>
+
+  <section id="page-tech" class="page">
+    <div class="hero"><div class="heroLabel">Innovation</div><h1>Technologie & traditions</h1><p id="techIntro"></p></div>
+    <div class="sectionTitle">Évolution technologique</div><div id="techTimeline" class="techTimeline"></div>
+    <div class="sectionTitle">Repères de tradition</div><div id="traditions" class="traditions"></div>
+  </section>
+
+  <section id="page-game" class="page"><div class="gameBox"><div><div class="gameIcon">◈</div><h1 id="gameTitle"></h1><p id="gameText"></p><span class="miniTag">À développer plus tard</span></div></div></section>
+</main>
+
+<nav class="bottom"><div class="bottomIn">
+  <button class="navBtn active" data-main="history" type="button"><strong>◷</strong><span>Histoire</span></button>
+  <button class="navBtn" data-main="heritage" type="button"><strong>◇</strong><span>Patrimoine</span></button>
+  <button class="navBtn" data-main="visit" type="button"><strong>◎</strong><span>Visite</span></button>
+</div></nav>
+
+<div id="loginModal" class="modalShade hidden">
+  <div class="modal"><div class="modalTop"><h2 id="loginTitle">Connexion</h2><button id="closeLogin" class="closeBtn" type="button">×</button></div>
+    <div id="nameField" class="field hidden"><label>Nom affiché</label><input id="nameInput"></div>
+    <div class="field"><label>Adresse e-mail</label><input id="emailInput" type="email"></div>
+    <div class="field"><label>Mot de passe</label><input id="passwordInput" type="password"></div>
+    <button id="submitLogin" class="submit" type="button">Se connecter</button>
+    <button id="switchLogin" class="switchMode" type="button">Créer un compte</button>
+    <div id="loginMsg" class="msg"></div>
+  </div>
+</div>
+
+<script src="content.js"></script>
+<script>
+const data=window.APP_DATA,$=s=>document.querySelector(s),$$=s=>Array.from(document.querySelectorAll(s));let registering=false;let backTarget=null;
+function initials(n){return (n||'?').trim().split(/\s+/).slice(0,2).map(x=>x[0]||'').join('').toUpperCase()||'?'}
+function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return (h>>>0).toString(16)}
+function accounts(){try{return JSON.parse(localStorage.getItem('svt_accounts')||'{}')}catch(e){return {}}}
+function currentUser(){const e=localStorage.getItem('svt_session'),a=accounts();return e&&a[e]?a[e]:null}
+function openDrawer(){ $('#drawer').classList.add('open');$('#shade').classList.add('open') } function closeDrawer(){ $('#drawer').classList.remove('open');$('#shade').classList.remove('open') }
+$('#menuBtn').onclick=openDrawer;$('#shade').onclick=closeDrawer;
+function show(page,title,detail=false){$$('.page').forEach(p=>p.classList.toggle('active',p.id===page));$('#headerTitle').textContent=title;backTarget=detail?backTarget:null;window.scrollTo(0,0);closeDrawer()}
+function showMain(id){const map={history:['page-history','Histoire'],heritage:['page-heritage','Patrimoine'],visit:['page-visit','Visite']};show(...map[id]);$$('.navBtn').forEach(b=>b.classList.toggle('active',b.dataset.main===id))}
+$$('.navBtn').forEach(b=>b.onclick=()=>showMain(b.dataset.main));
+function card(title,sub,icon='◆'){const b=document.createElement('button');b.className='card';b.type='button';b.innerHTML=`<div class="iconBox">${icon}</div><div class="cardBody"><div class="cardTitle">${title}</div><div class="cardSub">${sub||''}</div></div><div class="chev">›</div>`;return b}
+function renderHistory(){const w=$('#historyList');w.innerHTML='';data.history.forEach(x=>{const b=card(x.period,x.subtitle,'◷');b.onclick=()=>{backTarget='history';$('#historyDetail').innerHTML=`<div class="heroLabel" style="color:#8b6b32">${x.period}</div><h2>${x.title}</h2>${x.paragraphs.map(p=>`<p>${p}</p>`).join('')}<div class="chips">${x.chips.map(c=>`<span class="chip">${c}</span>`).join('')}</div><div class="quote">« ${x.quote} »</div><div class="source">Contenu de démonstration fondé sur des sources publiques officielles, à valider avant diffusion institutionnelle.</div>`;show('page-history-detail',x.title,true)};w.appendChild(b)})}
+function renderHeritage(){const w=$('#heritageList');w.innerHTML='';data.heritage.forEach(x=>{const b=card(x.title,x.subtitle,'◇');b.onclick=()=>{$('#heritageDetail').innerHTML=`<div class="heroLabel" style="color:#8b6b32">Patrimoine</div><h2>${x.title}</h2>${x.paragraphs.map(p=>`<p>${p}</p>`).join('')}<div class="chips">${x.chips.map(c=>`<span class="chip">${c}</span>`).join('')}</div>`;show('page-heritage-detail',x.title,true)};w.appendChild(b)})}
+function renderVisits(){const w=$('#visitList');w.innerHTML='';data.visits.forEach(x=>{const b=card(x.title,x.subtitle,'◎');b.onclick=()=>{$('#visitDetail').innerHTML=`<div class="heroLabel" style="color:#8b6b32">Visite</div><h2>${x.title}</h2><p>${x.text}</p><div class="quote">Fonction prévue pour une évolution ultérieure du projet.</div>`;show('page-visit-detail',x.title,true)};w.appendChild(b)})}
+function renderRegiments(f=''){const w=$('#regimentsList');w.innerHTML='';data.regiments.filter(x=>(x.name+' '+x.city).toLowerCase().includes(f.toLowerCase())).forEach(x=>{const b=card(x.name,`${x.city} · Création : ${x.created}`,'✦');b.onclick=()=>openRegiment(x);w.appendChild(b)})}
+function openRegiment(x){const sections=x.sections.map(s=>`<div class="detailSection"><h3>${s.title}</h3><p>${s.text}</p></div>`).join('');$('#regimentDetail').innerHTML=`<div class="regimentHeader"><div class="regimentBadge">${x.short}</div><h2>${x.name}</h2><div class="miniTag">${x.status}</div></div><div class="metaGrid"><div class="meta"><small>Création</small><strong>${x.created}</strong></div><div class="meta"><small>Implantation</small><strong>${x.city}</strong></div><div class="meta" style="grid-column:1/-1"><small>Devise</small><strong>${x.devise||'À compléter'}</strong></div></div>${sections}<div class="source">Synthèse structurée à partir d'informations publiques officielles du ministère des Armées. À valider avant publication institutionnelle.</div>`;show('page-regiment-detail',x.short,true)}
+$('#regSearch').oninput=e=>renderRegiments(e.target.value);
+function renderCct(){const w=$('#cctList');w.innerHTML='';data.cct.forEach(x=>{const b=card(x.name,`${x.parent} · ${x.location}`,'⌁');b.onclick=()=>{ $('#cctDetail').innerHTML=`<div class="heroLabel" style="color:#8b6b32">${x.parent}</div><h2>${x.name}</h2><div class="metaGrid"><div class="meta"><small>Grande unité</small><strong>${x.parent}</strong></div><div class="meta"><small>Implantation</small><strong>${x.location}</strong></div></div>${x.sections.map(s=>`<div class="detailSection"><h3>${s.title}</h3><p>${s.text}</p></div>`).join('')}<div class="source">Informations publiques uniquement.</div>`;show('page-cct-detail',x.name,true)};w.appendChild(b)})}
+function renderTech(){ $('#techIntro').textContent=data.technology.intro;$('#techTimeline').innerHTML=data.technology.items.map(x=>`<div class="tech"><div class="techDate">${x.date}</div><h3>${x.title}</h3><p>${x.text}</p></div>`).join('');$('#traditions').innerHTML=data.technology.traditions.map(t=>`<div class="tradition">${t}</div>`).join('') }
+function renderGame(){ $('#gameTitle').textContent=data.game.title;$('#gameText').textContent=data.game.text }
+function fillDrawer(){const r=$('#regimentsSub');r.innerHTML='';data.regiments.forEach(x=>{const b=document.createElement('button');b.className='drawerItem';b.innerHTML=`<span class="drawerIcon">•</span><span>${x.short}</span>`;b.onclick=()=>{show('page-regiments','Régiments');openRegiment(x)};r.appendChild(b)});const c=$('#cctSub');c.innerHTML='';data.cct.forEach(x=>{const b=document.createElement('button');b.className='drawerItem';b.innerHTML=`<span class="drawerIcon">•</span><span>${x.name}</span>`;b.onclick=()=>{show('page-cct','CCT / CCTFS');const target=data.cct.find(y=>y.id===x.id);$('#cctDetail').innerHTML=`<div class="heroLabel" style="color:#8b6b32">${target.parent}</div><h2>${target.name}</h2><div class="metaGrid"><div class="meta"><small>Grande unité</small><strong>${target.parent}</strong></div><div class="meta"><small>Implantation</small><strong>${target.location}</strong></div></div>${target.sections.map(s=>`<div class="detailSection"><h3>${s.title}</h3><p>${s.text}</p></div>`).join('')}`;show('page-cct-detail',target.name,true)};c.appendChild(b)})}
+$$('[data-toggle]').forEach(b=>b.onclick=()=>$('#'+b.dataset.toggle).classList.toggle('open'));
+$('#techMenu').onclick=()=>show('page-tech',data.technology.title);$('#gameMenu').onclick=()=>show('page-game',data.game.title);
+$('#instagramBtn').onclick=()=>{if(data.social.instagram){window.location.href=data.social.instagram}else{alert('Lien Instagram à ajouter dans content.js')}};
+function updateProfile(){const u=currentUser();if(u){$('#drawerAvatar').textContent=initials(u.name);$('#drawerName').textContent=u.name;$('#drawerStatus').textContent=u.email;$('#connectBtn').textContent='Se déconnecter';$('#topAvatar').textContent=initials(u.name);$('#topAvatar').classList.remove('hidden')}else{$('#drawerAvatar').textContent='?';$('#drawerName').textContent='Profil';$('#drawerStatus').textContent='Connexion facultative';$('#connectBtn').textContent='Se connecter';$('#topAvatar').classList.add('hidden')}}
+function openLogin(){registering=false;syncLogin();$('#loginModal').classList.remove('hidden');closeDrawer()}function syncLogin(){$('#nameField').classList.toggle('hidden',!registering);$('#loginTitle').textContent=registering?'Créer un compte':'Connexion';$('#submitLogin').textContent=registering?'Créer le compte':'Se connecter';$('#switchLogin').textContent=registering?'J’ai déjà un compte':'Créer un compte';$('#loginMsg').textContent=''}
+$('#connectBtn').onclick=()=>{if(currentUser()){localStorage.removeItem('svt_session');updateProfile()}else openLogin()};$('#topAvatar').onclick=openDrawer;$('#closeLogin').onclick=()=>$('#loginModal').classList.add('hidden');$('#switchLogin').onclick=()=>{registering=!registering;syncLogin()};$('#submitLogin').onclick=()=>{const email=$('#emailInput').value.trim().toLowerCase(),pw=$('#passwordInput').value,name=$('#nameInput').value.trim(),a=accounts();if(!email||pw.length<6){$('#loginMsg').textContent='E-mail et mot de passe de 6 caractères minimum requis.';return}if(registering){if(a[email]){$('#loginMsg').textContent='Ce compte existe déjà.';return}a[email]={email,name:name||email.split('@')[0],password:hash(pw)};localStorage.setItem('svt_accounts',JSON.stringify(a))}if(!a[email]||a[email].password!==hash(pw)){if(!registering){$('#loginMsg').textContent='Identifiant ou mot de passe incorrect.';return}}localStorage.setItem('svt_session',email);$('#loginModal').classList.add('hidden');updateProfile()};
+renderHistory();renderHeritage();renderVisits();renderRegiments();renderCct();renderTech();renderGame();fillDrawer();updateProfile();showMain('history');
+</script>
+</body>
+</html>
