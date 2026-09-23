@@ -42,7 +42,7 @@ window.APP_DATA = {
     {id:"figures", title:"Personnalités marquantes", subtitle:"Celles et ceux qui ont fait l’histoire", paragraphs:["Claude Chappe, Gustave Ferrié, Marien Leschi, les Merlinettes et d'autres figures ont contribué à l'histoire des communications militaires et civiles."], chips:["Chappe","Ferrié","Leschi","Merlinettes","Hedy Lamarr"]}
   ],
   visits: [
-    {id:"musee",title:"Visite 3D · Musée des Transmissions",subtitle:"Google Maps · 360° et étages",text:"Accéder directement à la visite immersive existante du Musée des Transmissions sur Google Maps, sans quitter Salle Virtuelle.",mapsUrl:"https://maps.app.goo.gl/gQLdD3DeYzaRSgwe8?g_st=ac"},
+    {id:"musee",title:"Visite Musée 3D",subtitle:"Visite immersive 360°",text:"Explorer le Musée des Transmissions en visite immersive, directement dans Salle Virtuelle.",mapsUrl:"https://maps.app.goo.gl/gQLdD3DeYzaRSgwe8?g_st=ac"},
     {id:"salles",title:"Salles d’exposition",subtitle:"Objets historiques",text:"Parcours thématiques autour des origines, des conflits, des innovations et des traditions."},
     {id:"objets",title:"Véhicules et équipements",subtitle:"Anciens et modernes",text:"Découvrir l’évolution des véhicules et stations de transmissions, des systèmes RITA aux moyens modernes d’appui au commandement."},
     {id:"reconstitutions",title:"Reconstitutions",subtitle:"Scènes immersives",text:"Scènes pédagogiques retraçant l'emploi des moyens de liaison à différentes périodes."},
