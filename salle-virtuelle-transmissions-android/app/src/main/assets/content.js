@@ -142,5 +142,31 @@ window.APP_DATA = {
       {title:"Drapeaux, fanions et devises",date:"Mémoire",text:"Les emblèmes, décorations, devises et inscriptions de bataille conservent la mémoire des campagnes et des unités dont les régiments actuels sont héritiers."}
     ]
   },
-  game:{title:"Jouer",subtitle:"Page en développement",text:"Cet espace accueillera plus tard des contenus interactifs : quiz historiques, reconnaissance d’insignes, chronologie et mini-jeux pédagogiques."}
+  game:{
+    title:"Jouer",
+    subtitle:"Défis historiques des Transmissions",
+    text:"Apprendre l’histoire des transmissions en manipulant les méthodes qui ont permis de coder, transmettre et recevoir des messages.",
+    games:[
+      {id:"polybe",title:"Carré de Polybe",subtitle:"Coder et décoder des messages",icon:"▦",status:"Disponible",version:"v0.8.0"},
+      {id:"chappe",title:"Télégraphe de Chappe",subtitle:"Reproduire les signaux optiques",icon:"⌁",status:"Prochaine étape",version:"v0.8.1"},
+      {id:"morse",title:"Morse",subtitle:"Écouter, décoder et émettre",icon:"·—",status:"À venir",version:"v0.8.2"}
+    ],
+    polybe:{
+      intro:"Chaque lettre est représentée par deux chiffres : ligne puis colonne. I et J occupent la même case.",
+      decodeChallenges:[
+        {plain:"MESSAGE",hint:"Un mot essentiel aux transmissions"},
+        {plain:"LIAISON",hint:"Ce qui relie les unités"},
+        {plain:"SIGNAL",hint:"Une information transmise"},
+        {plain:"RESEAU",hint:"Un ensemble de liaisons"},
+        {plain:"TRANSMETTRE",hint:"La mission fondamentale"}
+      ],
+      encodeChallenges:[
+        {plain:"RADIO",hint:"Un moyen de transmission"},
+        {plain:"POSTE",hint:"Matériel ou emplacement de transmission"},
+        {plain:"ORDRE",hint:"Une information à acheminer"},
+        {plain:"RELAIS",hint:"Il prolonge une liaison"},
+        {plain:"CONTACT",hint:"Maintenir la liaison"}
+      ]
+    }
+  }
 };
