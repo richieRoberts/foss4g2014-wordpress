@@ -149,7 +149,8 @@ window.APP_DATA = {
     games:[
       {id:"polybe",title:"Carré de Polybe",subtitle:"Coder et décoder des messages",icon:"▦",status:"Disponible",version:"v0.8.0"},
       {id:"chappe",title:"Télégraphe de Chappe",subtitle:"Reproduire les signaux optiques",icon:"⌁",status:"Disponible",version:"v0.8.1"},
-      {id:"morse",title:"Morse",subtitle:"Écouter, décoder et émettre",icon:"·—",status:"Disponible",version:"v0.8.2"}
+      {id:"morse",title:"Morse",subtitle:"Écouter, décoder et émettre",icon:"·—",status:"Disponible",version:"v0.8.2"},
+      {id:"traditionsQuiz",title:"Test traditions",subtitle:"Histoire, symboles et mémoire de l’arme",icon:"?",status:"Disponible",version:"v0.8.5"}
     ],
     polybe:{
       intro:"Chaque lettre est représentée par deux chiffres : ligne puis colonne. I et J occupent la même case.",
@@ -199,6 +200,21 @@ window.APP_DATA = {
         {plain:"FEU",hint:"Trois lettres"},
         {plain:"ORDRE",hint:"Un message à acheminer"},
         {plain:"RADIO",hint:"Un moyen de transmission"}
+      ]
+    },
+    traditionsQuiz:{
+      intro:"Testez vos connaissances sur les traditions, les grandes figures et les repères historiques des Transmissions. Une seule réponse est correcte par question.",
+      questions:[
+        {q:"Quel saint est traditionnellement associé aux transmetteurs ?",answers:["Saint Michel","Saint Gabriel","Saint Georges","Saint Éloi"],correct:1,explain:"Saint Gabriel est traditionnellement le patron des transmetteurs, en référence à sa fonction de messager."},
+        {q:"Quelle date marque la création des Transmissions comme arme distincte du Génie ?",answers:["15 février 1942","11 novembre 1918","8 mai 1945","1er juillet 1969"],correct:0,explain:"Le 15 février 1942 marque la naissance institutionnelle de l’arme des Transmissions comme arme distincte du Génie."},
+        {q:"Quelle expression résume traditionnellement la vocation des Transmissions ?",answers:["Toujours plus haut","L’arme qui unit les armes","Premier et dernier au feu","Un pour tous"],correct:1,explain:"« L’arme qui unit les armes » rappelle le rôle de liaison et de mise en relation du commandement et des unités."},
+        {q:"Quel inventeur est associé au télégraphe optique développé à la fin du XVIIIe siècle ?",answers:["Gustave Ferrié","Claude Chappe","Samuel Morse","Émile Baudot"],correct:1,explain:"Claude Chappe est associé au développement du télégraphe optique et à ses réseaux de sémaphores."},
+        {q:"Quel officier français est une figure majeure de la radiotélégraphie militaire ?",answers:["Gustave Ferrié","Claude Chappe","Marien Leschi","Hubert Lyautey"],correct:0,explain:"Gustave Ferrié joue un rôle majeur dans le développement de la radiotélégraphie militaire française."},
+        {q:"Comment appelle-t-on les femmes du Corps féminin des Transmissions engagées pendant la Seconde Guerre mondiale ?",answers:["Les Mariettes","Les Merlinettes","Les Gabrielles","Les Télégraphistes bleues"],correct:1,explain:"Les « Merlinettes » sont les personnels féminins du Corps féminin des Transmissions, créé sous l’impulsion du général Merlin."},
+        {q:"Quelle grande ligne de télégraphe optique est mise en service en 1794 ?",answers:["Paris–Lille","Paris–Brest","Lyon–Marseille","Paris–Strasbourg"],correct:0,explain:"La ligne Paris–Lille, longue d’environ 230 km, est une des premières grandes lignes du réseau Chappe."},
+        {q:"Quel système succède à RITTER dans l’évolution des réseaux tactiques français ?",answers:["RITA","MORSE","ASTRID","SICF"],correct:0,explain:"RITA constitue une étape majeure après RITTER dans l’évolution des réseaux tactiques de transmissions."},
+        {q:"Quel lieu est étroitement associé à l’histoire et à la formation des transmissions militaires françaises ?",answers:["Le Mont-Valérien","Verdun uniquement","Le Mont-Saint-Michel","Les Invalides uniquement"],correct:0,explain:"Le Mont-Valérien constitue un lieu important de l’histoire, de la formation et du patrimoine des transmissions militaires."},
+        {q:"Pendant la Première Guerre mondiale, quel ensemble de moyens pouvait être employé simultanément pour maintenir les liaisons ?",answers:["Téléphone, câbles, TSF et estafettes","Uniquement le téléphone","Uniquement les pigeons voyageurs","Uniquement la TSF"],correct:0,explain:"Téléphone de campagne, câbles, TSF, estafettes et moyens de secours pouvaient être employés simultanément."}
       ]
     }
   }
