@@ -165,10 +165,28 @@ public class MainActivity extends Activity {
     @Override
     @SuppressWarnings("deprecation")
     public void onBackPressed() {
-        if (webView != null && webView.canGoBack()) {
+        if (webView == null) {
+            super.onBackPressed();
+            return;
+        }
+
+        String url = webView.getUrl();
+        if (url != null && url.startsWith("file:///android_asset/")) {
+            webView.evaluateJavascript(
+                "(typeof goBackApp==='function' ? goBackApp(true) : false)",
+                value -> {
+                    if (!"true".equals(value)) {
+                        MainActivity.super.onBackPressed();
+                    }
+                }
+            );
+            return;
+        }
+
+        if (webView.canGoBack()) {
             webView.goBack();
         } else {
-            super.onBackPressed();
+            webView.loadUrl("file:///android_asset/index.html");
         }
     }
 }
