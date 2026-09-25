@@ -7,7 +7,7 @@ android {
         applicationId 'com.sallevirtuelle.transmissions'
         minSdk 23
         targetSdk 36
-        versionCode 802
-        versionName '0.8.0-r2'
+        versionCode 810
+        versionName '0.8.1'
     }
 }
