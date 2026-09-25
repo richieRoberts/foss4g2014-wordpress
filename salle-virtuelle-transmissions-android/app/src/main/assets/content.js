@@ -149,7 +149,7 @@ window.APP_DATA = {
     games:[
       {id:"polybe",title:"Carré de Polybe",subtitle:"Coder et décoder des messages",icon:"▦",status:"Disponible",version:"v0.8.0"},
       {id:"chappe",title:"Télégraphe de Chappe",subtitle:"Reproduire les signaux optiques",icon:"⌁",status:"Disponible",version:"v0.8.1"},
-      {id:"morse",title:"Morse",subtitle:"Écouter, décoder et émettre",icon:"·—",status:"À venir",version:"v0.8.2"}
+      {id:"morse",title:"Morse",subtitle:"Écouter, décoder et émettre",icon:"·—",status:"Disponible",version:"v0.8.2"}
     ],
     polybe:{
       intro:"Chaque lettre est représentée par deux chiffres : ligne puis colonne. I et J occupent la même case.",
@@ -182,6 +182,23 @@ window.APP_DATA = {
         "Le système repose sur des sémaphores installés sur des tours ou points hauts, observés à la longue-vue puis retransmis de station en station.",
         "Une première grande ligne est établie en 1794 entre Paris et Lille, sur environ 230 km.",
         "Le télégraphe comprend un régulateur et deux indicateurs mobiles dont les positions constituent des signaux codés."
+      ]
+    },
+    morse:{
+      intro:"Le code Morse représente les lettres et chiffres par des combinaisons de signaux courts et longs. Entraînez-vous à reconnaître puis à émettre ces séquences.",
+      decodeChallenges:[
+        {plain:"SOS",hint:"Signal international de détresse très connu"},
+        {plain:"RADIO",hint:"Un moyen de transmission"},
+        {plain:"POSTE",hint:"Un équipement ou un emplacement"},
+        {plain:"LIAISON",hint:"Relier deux correspondants"},
+        {plain:"SIGNAL",hint:"Information transmise"}
+      ],
+      emitChallenges:[
+        {plain:"A",hint:"Une lettre simple"},
+        {plain:"RT",hint:"Initiales familières dans l'arme"},
+        {plain:"FEU",hint:"Trois lettres"},
+        {plain:"ORDRE",hint:"Un message à acheminer"},
+        {plain:"RADIO",hint:"Un moyen de transmission"}
       ]
     }
   }
