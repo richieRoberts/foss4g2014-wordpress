@@ -148,7 +148,7 @@ window.APP_DATA = {
     text:"Apprendre l’histoire des transmissions en manipulant les méthodes qui ont permis de coder, transmettre et recevoir des messages.",
     games:[
       {id:"polybe",title:"Carré de Polybe",subtitle:"Coder et décoder des messages",icon:"▦",status:"Disponible",version:"v0.8.0"},
-      {id:"chappe",title:"Télégraphe de Chappe",subtitle:"Reproduire les signaux optiques",icon:"⌁",status:"Prochaine étape",version:"v0.8.1"},
+      {id:"chappe",title:"Télégraphe de Chappe",subtitle:"Reproduire les signaux optiques",icon:"⌁",status:"Disponible",version:"v0.8.1"},
       {id:"morse",title:"Morse",subtitle:"Écouter, décoder et émettre",icon:"·—",status:"À venir",version:"v0.8.2"}
     ],
     polybe:{
@@ -166,6 +166,22 @@ window.APP_DATA = {
         {plain:"ORDRE",hint:"Une information à acheminer"},
         {plain:"RELAIS",hint:"Il prolonge une liaison"},
         {plain:"CONTACT",hint:"Maintenir la liaison"}
+      ]
+    },
+    chappe:{
+      intro:"Observez le signal cible puis reproduisez exactement la position du régulateur et des deux indicateurs. Chaque commande fait pivoter un élément par pas de 45°.",
+      missions:[
+        {reg:0,left:-45,right:45},
+        {reg:45,left:90,right:-45},
+        {reg:-45,left:45,right:90},
+        {reg:90,left:-90,right:45},
+        {reg:0,left:90,right:-90}
+      ],
+      facts:[
+        "Le 2 mars 1791, Claude Chappe réalise un premier essai public de communication à distance.",
+        "Le système repose sur des sémaphores installés sur des tours ou points hauts, observés à la longue-vue puis retransmis de station en station.",
+        "Une première grande ligne est établie en 1794 entre Paris et Lille, sur environ 230 km.",
+        "Le télégraphe comprend un régulateur et deux indicateurs mobiles dont les positions constituent des signaux codés."
       ]
     }
   }
