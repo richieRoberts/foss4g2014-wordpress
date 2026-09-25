@@ -140,7 +140,7 @@
 <script src="v06_assets.js"></script>
 <script src="content.js"></script>
 <script>
-const data=window.APP_DATA,$=s=>document.querySelector(s),$=s=>Array.from(document.querySelectorAll(s));let registering=false;let backTarget=null;let navStack=[];let currentPage='page-history',currentTitle='Histoire';
+const data=window.APP_DATA,$=s=>document.querySelector(s),qsa=s=>Array.from(document.querySelectorAll(s));let registering=false;let backTarget=null;let navStack=[];let currentPage='page-history',currentTitle='Histoire';
 function initials(n){return (n||'?').trim().split(/\s+/).slice(0,2).map(x=>x[0]||'').join('').toUpperCase()||'?'}
 function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return (h>>>0).toString(16)}
 function accounts(){try{return JSON.parse(localStorage.getItem('svt_accounts')||'{}')}catch(e){return {}}}
@@ -175,7 +175,7 @@ function vehiclesHtml(){
     (v.source?'<button class="officialBtn vehicleSource" data-url="'+v.source+'">Voir la source / fiche</button>':'')+
     '</div></div>').join('')+'</div>';
 }
-function bindVehicleSources(){ $$('.vehicleSource').forEach(b=>b.onclick=()=>openOfficial(b.dataset.url)) }
+function bindVehicleSources(){ qsa('.vehicleSource').forEach(b=>b.onclick=()=>openOfficial(b.dataset.url)) }
 function renderVisits(){const w=$('#visitList');w.innerHTML='';data.visits.forEach(x=>{const b=card(x.title,x.subtitle,'◎');b.onclick=()=>{if(x.id==='musee'&&x.mapsUrl){window.location.href=x.mapsUrl;return}let extra='';if(x.id==='galerie')extra=museumMediaHtml('galerie');if(x.id==='objets')extra=vehiclesHtml();$('#visitDetail').innerHTML='<div class="heroLabel" style="color:#8b6b32">Visite</div><h2>'+x.title+'</h2><p>'+x.text+'</p>'+extra+(x.id==='salles'||x.id==='reconstitutions'?'<div class="quote">Fonction prévue pour une évolution ultérieure du projet.</div>':'');show('page-visit-detail',x.title,true);if(x.id==='objets')bindVehicleSources()};w.appendChild(b)})}
 function renderRegiments(f=''){const w=$('#regimentsList');w.innerHTML='';data.regiments.filter(x=>(x.name+' '+x.city).toLowerCase().includes(f.toLowerCase())).forEach(x=>{const b=card(x.name,`${x.city} · Création : ${x.created}`,'✦');b.onclick=()=>openRegiment(x);w.appendChild(b)})}
 function officialButton(x){return x&&x.officialUrl?'<button id="officialPageBtn" class="officialBtn">Page officielle · lecture intégrée</button><div class="officialHint">La page s’ouvre dans l’application. Une connexion Internet est nécessaire.</div>':''}
@@ -201,7 +201,7 @@ function nextPolybe(){if(polybeIndex<4){polybeIndex++;renderPolybeMission()}else
 function openGamePreview(g){$('#gamePreview').innerHTML='<div class="heroLabel" style="color:#8b6b32">'+g.version+'</div><h2>'+g.title+'</h2><p>'+g.subtitle+'</p><div class="learnBox"><strong>Développement prévu :</strong> ce mini-jeu sera activé dans '+g.version+'. La carte est déjà intégrée afin de préparer le parcours Jouer.</div>';show('page-game-preview',g.title)}
 function renderGame(){ $('#gameText').textContent=data.game.text;const h=$('#gameHub');h.innerHTML='';data.game.games.forEach(g=>{const b=document.createElement('button');b.className='gameCard';b.type='button';b.innerHTML='<div class="gameCardIcon">'+g.icon+'</div><div><h3>'+g.title+'</h3><p>'+g.subtitle+'</p><div class="gameVersion">'+g.version+' · '+g.status+'</div></div><div class="gameArrow">›</div>';b.onclick=()=>g.id==='polybe'?startPolybe('decode'):openGamePreview(g);h.appendChild(b)});$('#polybeIntro').textContent=data.game.polybe.intro;$('#polybeGrid').innerHTML=polybeGridHtml();$('#polybeDecodeTab').onclick=()=>startPolybe('decode');$('#polybeEncodeTab').onclick=()=>startPolybe('encode');$('#polybeCheck').onclick=checkPolybe;$('#polybeNext').onclick=nextPolybe}
 function fillDrawer(){const r=$('#regimentsSub');r.innerHTML='';data.regiments.forEach(x=>{const b=document.createElement('button');b.className='drawerItem';b.innerHTML='<span class="drawerIcon">•</span><span>'+x.short+'</span>';b.onclick=()=>{show('page-regiments','Régiments');openRegiment(x)};r.appendChild(b)});const c=$('#cctSub');c.innerHTML='';data.cct.forEach(x=>{const b=document.createElement('button');b.className='drawerItem';b.innerHTML='<span class="drawerIcon">•</span><span>'+x.name+'</span>';b.onclick=()=>openCct(x);c.appendChild(b)})}
-$$('[data-toggle]').forEach(b=>b.onclick=()=>$('#'+b.dataset.toggle).classList.toggle('open'));
+qsa('[data-toggle]').forEach(b=>b.onclick=()=>$('#'+b.dataset.toggle).classList.toggle('open'));
 $('#techMenu').onclick=()=>show('page-tech',data.technology.title);$('#gameMenu').onclick=()=>show('page-game',data.game.title);
 $('#instagramBtn').onclick=()=>{if(data.social.instagram){window.location.href=data.social.instagram}else{alert('Lien Instagram à ajouter dans content.js')}};
 function setBrandAvatar(el){const A=window.V06_ASSETS||{};el.textContent='';el.classList.add('brandMode');if(A.da_logo_reference)el.style.backgroundImage='url('+A.da_logo_reference+')'}
